@@ -10,8 +10,9 @@ let configuration = {
 }
 
 let state = {
-    isRunning: false,
-    timerEndTime: null
+    timerEndTime: null,
+    timerStartTime: null,
+    timerPauseTime: null
 }
 
 app.get('/', (req, res) => {
@@ -35,7 +36,8 @@ app.get('/time', (req, res) => {
 app.post("/start", (req, res) => {
     console.log("Timer has started!")
     state = {
-        isRunning: true,
+        timerStartTime: Date.now(),
+        timerPauseTime: null,
         timerEndTime: Date.now() + configuration.time
     }
     res.json(state)
@@ -44,7 +46,7 @@ app.post("/start", (req, res) => {
 app.post("/stop", (req, res) => {
     state = {
         ...state,
-        isRunning: false,
+        timerPauseTime: Date.now()
     }
     console.log("Timer has stopped!")
     res.json(state)
