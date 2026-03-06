@@ -1,0 +1,14 @@
+{
+  "name": "timer",
+  "version": "1.0.0",
+  "description": "A simple synced timer",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main"
+  },
+  "author": "Pepe Coral",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

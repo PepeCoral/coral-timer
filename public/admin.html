@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html data-theme="cupcake">
+
+<head>
+
+    <meta charset="UTF-8" />
+    <title>Coral timer</title>
+
+    <link rel="icon" type="image/png" href="/public/favicon.png">
+
+    <!-- Tailwind -->
+    <script src=" https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4">
+    </script>
+    <!-- DaisyUI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+
+    <script src="/public/admin.js"></script>
+
+</head>
+
+
+
+<body class="min-h-screen flex flex-col">
+
+    <progress id="progress" class="progress progress-primary w-full"></progress>
+
+    <main class="flex-1 flex flex-col items-center justify-center bg-success relative">
+
+        <h1 class="font-mono text-[4vw]">Administrator panel</h1>
+
+        <div class="font-mono text-[20vw] leading-none flex items-center gap-0">
+
+            <span class="countdown">
+                <span id="minutes" style="--value:59; --digits:2">59</span>
+            </span>
+
+            <span>:</span>
+
+            <span class="countdown">
+                <span id="seconds" style="--value:59; --digits:2">59</span>
+            </span>
+
+        </div>
+
+        <div>
+            <button id="start" class="btn btn-primary">Start</button>
+            <button id="stop" class="btn btn-error">Stop</button>
+        </div>
+
+
+
+        <footer class="absolute bottom-4 text-center text-sm bg-secondary px-4  py-2 rounded-xl">
+            Made with <a href="">❤️</a> from
+            <a href="https://share.google/3FXuoTS09TJSmZMsd">🪸</a>
+            by <a href="example.com">PepeCoral</a>
+        </footer>
+
+    </main>
+
+</body>
+
+</html>
