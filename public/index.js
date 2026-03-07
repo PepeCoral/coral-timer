@@ -5,6 +5,16 @@ let secondsSpan;
 let progress;
 
 
+fetch('/time')
+    .then(response => response.json())
+    .then(response => {
+
+        error = Math.abs(response - Date.now())
+
+        if (error > 2 * 1000) alert("Comprueba la configuración de tu reloj, es posible que estes desincronizado")
+
+    })
+    .catch(err => console.log(err))
 
 fetch('/status')
     .then(response => response.json())
@@ -54,7 +64,7 @@ function updateTimer(now) {
 function updateProgressBar(now) {
 
     if (!state) return;
-    progress.value = calculteProgessPercent()
+    progress.value = calculteProgessPercent(now)
 }
 
 function calculateMinutesLeft(target, now) {
