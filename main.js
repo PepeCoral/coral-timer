@@ -1,6 +1,8 @@
 const express = require('express');
-const app = require('express')();
+const app = express();
 const http = require('http').createServer(app);
+const { Server } = require('socket.io');
+const io = new Server(http);
 
 const port = process.env.PORT || 8000;
 
@@ -40,6 +42,8 @@ app.post("/start", (req, res) => {
         timerPauseTime: null,
         timerEndTime: Date.now() + configuration.time
     }
+
+    io.emit('timerUpdate', state);
     res.json(state)
 })
 
@@ -49,8 +53,22 @@ app.post("/stop", (req, res) => {
         timerPauseTime: Date.now()
     }
     console.log("Timer has stopped!")
+
+    io.emit('timerUpdate', state);
     res.json(state)
 })
+
+
+io.on('connection', (socket) => {
+    console.log('A client connected');
+
+    // Send current state immediately on connection
+    socket.emit('timerUpdate', state);
+
+    socket.on('disconnect', () => {
+        console.log('A client disconnected');
+    });
+});
 
 http.listen(port, () => {
     console.log("Server is ready in port: " + port);

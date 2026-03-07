@@ -4,6 +4,7 @@ let minutesSpan;
 let secondsSpan;
 let progress;
 
+const socket = io();
 
 fetch('/time')
     .then(response => response.json())
@@ -31,6 +32,12 @@ function init() {
     minutesSpan = document.getElementById("minutes")
     secondsSpan = document.getElementById("seconds")
     progress = document.getElementById("progress")
+
+    socket.on('timerUpdate', (newState) => {
+        state = newState;
+        updateTimer(now());
+        updateProgressBar(now());
+    });
 
     setInterval(onTick, 100);
 

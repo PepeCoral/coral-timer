@@ -9,6 +9,7 @@
   "author": "Pepe Coral",
   "license": "GPL-3.0",
   "dependencies": {
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "socket.io": "^4.8.3"
   }
 }
