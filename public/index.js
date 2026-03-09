@@ -3,6 +3,7 @@ state = null
 let minutesSpan;
 let secondsSpan;
 let progress;
+let bg;
 
 const socket = io();
 
@@ -32,6 +33,7 @@ function init() {
     minutesSpan = document.getElementById("minutes")
     secondsSpan = document.getElementById("seconds")
     progress = document.getElementById("progress")
+    bg = document.getElementById("bg")
 
     socket.on('timerUpdate', (newState) => {
         state = newState;
@@ -49,8 +51,25 @@ function onTick() {
     if (state.timerPauseTime) return;
     updateTimer(now());
     updateProgressBar(now());
+    updateBg(now())
 }
 
+
+function updateBg(now) {
+
+    let diff = state.timerEndTime - now;
+    if (diff < 0) diff = 0;
+
+    bg.classList.remove("base-100", "bg-warning", "bg-error")
+
+    if (diff <= 10 * 1000) {
+        bg.classList.add("bg-error")
+    } else if (diff <= 60 * 1000) {
+        bg.classList.add("bg-warning")
+    } else {
+        bg.classList.add("base-100")
+    }
+}
 function updateTimer(now) {
 
     if (!state || !state.timerEndTime) return;
