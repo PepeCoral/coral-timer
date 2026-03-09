@@ -27,7 +27,7 @@ fetch('/status')
     .catch(err => console.log(err))
 
 
-window.onload = init
+document.addEventListener("DOMContentLoaded", init)
 function init() {
 
     minutesSpan = document.getElementById("minutes")
