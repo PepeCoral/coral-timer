@@ -3,124 +3,124 @@
 
 <head>
 
-    <meta charset="UTF-8" />
-    <title>Coral timer</title>
+  <meta charset="UTF-8" />
+  <title>Coral timer</title>
 
-    <link rel="icon" type="image/png" href="/public/favicon.png">
+  <link rel="icon" type="image/png" href="/public/favicon.png">
 
-    <!-- Tailwind -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <!-- Tailwind -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-    <!-- DaisyUI -->
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+  <!-- DaisyUI -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
 
-    <!-- Socket.IO -->
-    <script src="/socket.io/socket.io.js"></script>
+  <!-- Socket.IO -->
+  <script src="/socket.io/socket.io.js"></script>
 
-    <script src="/public/index.js"></script>
-    <script src="/public/mod.js"></script>
-    <script src="/public/admin.js"></script>
+  <script src="/public/toast.js"></script>
+  <script src="/public/index.js"></script>
+  <script src="/public/mod.js"></script>
+  <script src="/public/admin.js"></script>
 
 </head>
 
 <body class="min-h-screen flex flex-col">
 
-    <progress id="progress" class="progress progress-primary w-full h-5" max="100"></progress>
+  <progress id="progress" class="progress progress-primary w-full h-5" max="100"></progress>
 
-    <main id="bg" class="flex-1 flex flex-col items-center justify-center bg-base-100 relative gap-10">
+  <main id="bg" class="flex-1 flex flex-col items-center justify-center bg-base-100 relative gap-10">
 
-        <!-- TIMER -->
-        <div class="font-mono text-[20vw] leading-none flex items-center gap-0">
+    <!-- TIMER -->
+    <div class="font-mono text-[20vw] leading-none flex items-center gap-0">
 
-            <span class="countdown">
-                <span id="minutes" style="--value:60; --digits:2">60</span>
-            </span>
+      <span class="countdown">
+        <span id="minutes" style="--value:60; --digits:2">60</span>
+      </span>
 
-            <span>:</span>
+      <span>:</span>
 
-            <span class="countdown">
-                <span id="seconds" style="--value:59; --digits:2">59</span>
-            </span>
+      <span class="countdown">
+        <span id="seconds" style="--value:59; --digits:2">59</span>
+      </span>
+
+    </div>
+
+    <!-- ADMIN PANEL -->
+    <div class="card bg-base-200 shadow-xl w-full max-w-xl">
+      <div class="card-body">
+
+        <h2 class="card-title">Administrator Controls</h2>
+
+        <div class="form-control w-full">
+          <label class="label">
+            <span class="label-text">Administrator Password</span>
+          </label>
+          <input id="password" type="password" placeholder="Administrator password"
+            class="input input-bordered w-full" />
+        </div>
+
+        <div class="form-control w-full mt-4">
+          <label class="label">
+            <span class="label-text">Set Moderator Password</span>
+          </label>
+
+          <div class="join w-full">
+            <input id="modPass" type="password" placeholder="Moderator password"
+              class="input input-bordered join-item" />
+
+
+            <button id="sendModPass" class="btn btn-secondary join-item">
+              Send
+            </button>
+          </div>
+        </div>
+
+        <div class="form-control w-full mt-4">
+          <label class="label">
+            <span class="label-text">Set Timer</span>
+          </label>
+
+          <div class="join w-full">
+            <input id="inputMinutes" type="number" placeholder="MM" min="0"
+              class="input input-bordered join-item w-24" />
+
+            <span class="join-item flex items-center px-2">:</span>
+
+            <input id="inputSeconds" type="number" placeholder="SS" min="0" max="59"
+              class="input input-bordered join-item w-24" />
+
+            <button id="sendTime" class="btn btn-secondary join-item">
+              Send
+            </button>
+          </div>
+        </div>
+
+        <div class="form-control w-full mt-4">
+          <label class="label">
+            <span class="label-text">Set Timer</span>
+          </label>
+
+
+
+          <div class="flex gap-4 mt-4">
+            <button id="start" class="btn btn-primary flex-1">Start</button>
+            <button id="stop" class="btn btn-error flex-1">Stop</button>
+          </div>
 
         </div>
 
-        <!-- ADMIN PANEL -->
-        <div class="card bg-base-200 shadow-xl w-full max-w-xl">
-            <div class="card-body">
+      </div>
+    </div>
 
-                <h2 class="card-title">Administrator Controls</h2>
+    <!-- FOOTER -->
+    <footer class="absolute bottom-4 text-center text-sm bg-secondary px-4 py-2 rounded-xl">
+      Made with <a href="https://img2.rtve.es/n/2337862" target="_blank">💚</a> from
+      <a href="https://share.google/3FXuoTS09TJSmZMsd" target="_blank">🪸</a>
+      by <a href="https://github.com/PepeCoral/coral-timer" target="_blank" class="text-info underline">PepeCoral</a>
+    </footer>
 
-                <div class="form-control w-full">
-                    <label class="label">
-                        <span class="label-text">Administrator Password</span>
-                    </label>
-                    <input id="password" type="password" placeholder="Administrator password"
-                        class="input input-bordered w-full" />
-                </div>
-
-                <div class="form-control w-full mt-4">
-                    <label class="label">
-                        <span class="label-text">Set Moderator Password</span>
-                    </label>
-
-                    <div class="join w-full">
-                        <input id="modPass" type="password" placeholder="Moderator password"
-                            class="input input-bordered join-item" />
-
-
-                        <button id="sendModPass" class="btn btn-secondary join-item">
-                            Send
-                        </button>
-                    </div>
-                </div>
-
-                <div class="form-control w-full mt-4">
-                    <label class="label">
-                        <span class="label-text">Set Timer</span>
-                    </label>
-
-                    <div class="join w-full">
-                        <input id="inputMinutes" type="number" placeholder="MM" min="0"
-                            class="input input-bordered join-item w-24" />
-
-                        <span class="join-item flex items-center px-2">:</span>
-
-                        <input id="inputSeconds" type="number" placeholder="SS" min="0" max="59"
-                            class="input input-bordered join-item w-24" />
-
-                        <button id="sendTime" class="btn btn-secondary join-item">
-                            Send
-                        </button>
-                    </div>
-                </div>
-
-                <div class="form-control w-full mt-4">
-                    <label class="label">
-                        <span class="label-text">Set Timer</span>
-                    </label>
-
-
-
-                    <div class="flex gap-4 mt-4">
-                        <button id="start" class="btn btn-primary flex-1">Start</button>
-                        <button id="stop" class="btn btn-error flex-1">Stop</button>
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-
-        <!-- FOOTER -->
-        <footer class="absolute bottom-4 text-center text-sm bg-secondary px-4 py-2 rounded-xl">
-            Made with <a href="https://img2.rtve.es/n/2337862" target="_blank">💚</a> from
-            <a href="https://share.google/3FXuoTS09TJSmZMsd" target="_blank">🪸</a>
-            by <a href="https://github.com/PepeCoral/coral-timer" target="_blank"
-                class="text-info underline">PepeCoral</a>
-        </footer>
-
-    </main>
+  </main>
 
 </body>
 

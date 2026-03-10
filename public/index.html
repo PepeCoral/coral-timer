@@ -3,21 +3,22 @@
 
 <head>
 
-    <meta charset="UTF-8" />
-    <title>Coral timer</title>
+  <meta charset="UTF-8" />
+  <title>Coral timer</title>
 
-    <link rel="icon" type="image/png" href="/public/favicon.png">
+  <link rel="icon" type="image/png" href="/public/favicon.png">
 
-    <!-- Tailwind -->
-    <script src=" https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4">
-    </script>
-    <!-- DaisyUI -->
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
-    <!-- Socket.IO -->
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/public/index.js"></script>
+  <!-- Tailwind -->
+  <script src=" https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4">
+  </script>
+  <!-- DaisyUI -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+  <!-- Socket.IO -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/public/toast.js"></script>
+  <script src="/public/index.js"></script>
 
 </head>
 
@@ -25,32 +26,31 @@
 
 <body class="min-h-screen flex flex-col">
 
-    <progress id="progress" class="progress progress-primary w-full h-5" max="100"></progress>
+  <progress id="progress" class="progress progress-primary w-full h-5" max="100"></progress>
 
-    <main id="bg" class="flex-1 flex flex-col items-center justify-center bg-base-100 relative">
+  <main id="bg" class="flex-1 flex flex-col items-center justify-center bg-base-100 relative">
 
-        <div class="font-mono text-[24vw] leading-none flex items-center gap-0">
+    <div class="font-mono text-[24vw] leading-none flex items-center gap-0">
 
-            <span class="countdown">
-                <span id="minutes" style="--value:60; --digits:2">60</span>
-            </span>
+      <span class="countdown">
+        <span id="minutes" style="--value:60; --digits:2">60</span>
+      </span>
 
-            <span>:</span>
+      <span>:</span>
 
-            <span class="countdown">
-                <span id="seconds" style="--value:59; --digits:2">59</span>
-            </span>
+      <span class="countdown">
+        <span id="seconds" style="--value:59; --digits:2">59</span>
+      </span>
 
-        </div>
+    </div>
 
-        <footer class="absolute bottom-4 text-center text-sm bg-secondary px-4  py-2 rounded-xl">
-            Made with <a href="https://img2.rtve.es/n/2337862" target="_blank">💚</a> from
-            <a href="https://share.google/3FXuoTS09TJSmZMsd" target="_blank">🪸</a>
-            by <a href="https://github.com/PepeCoral/coral-timer" target="_blank"
-                class="text-info underline">PepeCoral</a>
-        </footer>
+    <footer class="absolute bottom-4 text-center text-sm bg-secondary px-4  py-2 rounded-xl">
+      Made with <a href="https://img2.rtve.es/n/2337862" target="_blank">💚</a> from
+      <a href="https://share.google/3FXuoTS09TJSmZMsd" target="_blank">🪸</a>
+      by <a href="https://github.com/PepeCoral/coral-timer" target="_blank" class="text-info underline">PepeCoral</a>
+    </footer>
 
-    </main>
+  </main>
 
 </body>
 
