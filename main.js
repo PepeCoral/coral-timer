@@ -1,5 +1,4 @@
 const express = require('express');
-const { stat } = require('fs');
 const app = express();
 const http = require('http').createServer(app);
 const { Server } = require('socket.io');
@@ -11,7 +10,7 @@ const adminPassword = process.env.ADMIN_PASSWORD || "admin";
 
 let configuration = {
     time: 16 * 60 * 1000,
-    moderatorPassword: null
+    moderatorPassword: "mod"
 }
 
 let state = {
@@ -39,6 +38,10 @@ app.get('/mod', (req, res) => {
 app.post('/config/time', (req, res) => {
 
 
+    if (!authAdminOrModerator(req)) {
+        return res.status(401).json({ error: 'Unauthorized' });
+    }
+
     const time = Number(req.body.time);
 
     configuration = { ...configuration, time: time }
@@ -54,6 +57,11 @@ app.post('/config/time', (req, res) => {
 })
 
 app.post('/config/mod/password', (req, res) => {
+
+
+    if (!authAdmin(req)) {
+        return res.status(401).json({ error: 'Unauthorized' });
+    }
 
     configuration = { ...configuration, moderatorPassword: req.body.password }
 
@@ -71,18 +79,27 @@ app.get('/time', (req, res) => {
 })
 
 app.post("/start", (req, res) => {
-    console.log("Timer has started!")
+
+    if (!authAdminOrModerator(req)) {
+        return res.status(401).json({ error: 'Unauthorized' });
+    }
     state = {
         timerStartTime: Date.now(),
         timerPauseTime: null,
         timerEndTime: Date.now() + configuration.time
     }
 
+    console.log("Timer has started!")
     io.emit('timerUpdate', state);
     res.json(state)
 })
 
 app.post("/stop", (req, res) => {
+
+
+    if (!authAdminOrModerator(req)) {
+        return res.status(401).json({ error: 'Unauthorized' });
+    }
 
     if (state.timerPauseTime != null) { res.json(state); return; }
     state = {
@@ -94,6 +111,30 @@ app.post("/stop", (req, res) => {
     io.emit('timerUpdate', state);
     res.json(state)
 })
+
+
+
+function authAdmin(req) {
+    const password = req.headers['authentication'];
+    return isAdmin(password)
+}
+
+function authAdminOrModerator(req) {
+    const password = req.headers['authentication'];
+    return isAdminOrMod(password);
+}
+
+function isAdmin(password) {
+    return password === adminPassword
+}
+
+function isAdminOrMod(password) {
+    return isAdmin(password) || isMod(password)
+}
+
+function isMod(password) {
+    return configuration.moderatorPassword && configuration.moderatorPassword === password
+}
 
 
 io.on('connection', (socket) => {

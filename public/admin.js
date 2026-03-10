@@ -10,7 +10,8 @@ function init() {
         fetch("/config/mod/password", {
             method: 'POST',
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authentication": getPassword()
             },
             body: JSON.stringify({ password: password })
         })
@@ -19,3 +20,6 @@ function init() {
 
 }
 
+function getPassword() {
+    return document.getElementById("password").value;
+}

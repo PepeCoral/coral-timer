@@ -22,7 +22,7 @@ fetch('/status')
     .then(response => response.json())
     .then(response => {
         state = response
-        updateTimer(now())
+        onTick(now(), force = true)
     })
     .catch(err => console.log(err))
 
@@ -37,8 +37,7 @@ function init() {
 
     socket.on('timerUpdate', (newState) => {
         state = newState;
-        updateTimer(now());
-        updateProgressBar(now());
+        onTick(now(), force = true)
     });
 
     setInterval(onTick, 100);
@@ -47,8 +46,8 @@ function init() {
 }
 
 
-function onTick() {
-    if (state.timerPauseTime) return;
+function onTick(force = false) {
+    if (state.timerPauseTime && !force) return;
     updateTimer(now());
     updateProgressBar(now());
     updateBg(now())

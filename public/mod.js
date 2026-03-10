@@ -7,11 +7,10 @@ function init() {
     startButton.addEventListener("click", (_) => {
         console.log(state)
 
-        fetch("/start", { method: 'POST' })
-            .then(response => response.json())
-            .then(response => {
-                state = response
-            })
+        fetch("/start", {
+            method: 'POST',
+            headers: { "Authentication": getPassword() }
+        })
             .catch(err => console.log(err))
     })
 
@@ -20,11 +19,10 @@ function init() {
     stopButton.addEventListener("click", (_) => {
         console.log(state)
 
-        fetch("/stop", { method: 'POST' })
-            .then(response => response.json())
-            .then(response => {
-                state = response
-            })
+        fetch("/stop", {
+            method: 'POST',
+            headers: { "Authentication": getPassword() }
+        })
             .catch(err => console.log(err))
     })
 
@@ -37,7 +35,8 @@ function init() {
         fetch("/config/time", {
             method: 'POST',
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authentication": getPassword()
             },
             body: JSON.stringify({ time: totalMillis })
         })
@@ -46,3 +45,8 @@ function init() {
 
 }
 
+
+
+function getPassword() {
+    return document.getElementById("password").value;
+}
