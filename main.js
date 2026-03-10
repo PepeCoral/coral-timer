@@ -21,7 +21,7 @@ let state = {
 
 
 app.use(express.json());
-
+app.use(express.static(__dirname, + '/public'))
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + "/public/index.html")
@@ -68,7 +68,7 @@ app.post('/config/mod/password', (req, res) => {
     res.json(state)
 })
 
-app.use(express.static(__dirname, + '/public'))
+
 
 app.get('/status', (req, res) => {
     res.json(state)
