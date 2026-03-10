@@ -1,4 +1,4 @@
-const THEMES = ['cupcake', 'bumblebee', 'emerald', 'acid', 'lemonade', 'coffee', 'retro', 'lofi', 'valentine', 'dark'];
+const THEMES = ['cupcake', 'bumblebee', 'emerald', 'acid', 'lemonade', 'coffee', 'retro', 'lofi', 'valentine', 'dark', 'betis'];
 
 class ThemeSelector extends HTMLElement {
   constructor() {
