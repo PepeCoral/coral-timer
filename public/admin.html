@@ -19,6 +19,7 @@
   <script src="/socket.io/socket.io.js"></script>
 
   <script src="/public/toast.js"></script>
+  <script src="/public/theme-selector.js"></script>
   <script src="/public/index.js"></script>
   <script src="/public/mod.js"></script>
   <script src="/public/admin.js"></script>
@@ -26,12 +27,12 @@
 </head>
 
 <body class="min-h-screen flex flex-col">
+  <theme-selector class="fixed top-4 right-4 z-50"></theme-selector>
 
   <progress id="progress" class="progress progress-primary w-full h-5" max="100"></progress>
 
   <main id="bg" class="flex-1 flex flex-col items-center justify-center bg-base-100 relative gap-10">
 
-    <!-- TIMER -->
     <div class="font-mono text-[20vw] leading-none flex items-center gap-0">
 
       <span class="countdown">
@@ -46,7 +47,6 @@
 
     </div>
 
-    <!-- ADMIN PANEL -->
     <div class="card bg-base-200 shadow-xl w-full max-w-xl">
       <div class="card-body">
 
@@ -113,8 +113,7 @@
       </div>
     </div>
 
-    <!-- FOOTER -->
-    <footer class="absolute bottom-4 text-center text-sm bg-secondary px-4 py-2 rounded-xl">
+    <footer class="absolute bottom-4 text-center text-sm bg-secondary px-4 text-secondary-content py-2 rounded-xl">
       Made with <a href="https://img2.rtve.es/n/2337862" target="_blank">💚</a> from
       <a href="https://share.google/3FXuoTS09TJSmZMsd" target="_blank">🪸</a>
       by <a href="https://github.com/PepeCoral/coral-timer" target="_blank" class="text-info underline">PepeCoral</a>
