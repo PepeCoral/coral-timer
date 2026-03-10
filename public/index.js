@@ -41,8 +41,6 @@ function init() {
     });
 
     setInterval(onTick, 100);
-
-
 }
 
 
@@ -73,9 +71,6 @@ function updateTimer(now) {
 
     if (!state || !state.timerEndTime) return;
 
-
-
-
     const minutes = calculateMinutesLeft(state.timerEndTime, now)
     const seconds = calculateSecondsLeft(state.timerEndTime, now)
 
@@ -97,8 +92,6 @@ function calculateMinutesLeft(target, now) {
     let diff = target - now;
     if (diff < 0) diff = 0
     return Math.floor(diff / (60 * 1000))
-
-
 }
 
 function calculateSecondsLeft(target, now) {

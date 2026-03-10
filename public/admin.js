@@ -16,8 +16,6 @@ function init() {
             body: JSON.stringify({ password: password })
         })
     };
-
-
 }
 
 function getPassword() {

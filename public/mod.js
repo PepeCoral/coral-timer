@@ -46,7 +46,6 @@ function init() {
 }
 
 
-
 function getPassword() {
     return document.getElementById("password").value;
 }
