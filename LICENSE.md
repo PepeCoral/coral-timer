@@ -672,3 +672,16 @@ may consider it more useful to permit linking proprietary applications with
 the library.  If this is what you want to do, use the GNU Lesser General
 Public License instead of this License.  But first, please read
 <https://www.gnu.org/licenses/why-not-lgpl.html>.
+
+Additional Permission for Coral Timer:
+
+Notwithstanding anything else in this License, you are required to retain
+the credit and attribution in the app’s user interface as originally provided.  
+Specifically, the section:
+
+    Made with 💚 from 🪸 by PepeCoral
+
+must remain visible in the application interface, and the links included
+there must remain unaltered. This requirement does not restrict
+modification or redistribution of the software in any other way; it only
+ensures the credit remains intact.
