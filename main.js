@@ -10,7 +10,7 @@ const adminPassword = process.env.ADMIN_PASSWORD || "admin";
 
 let configuration = {
     time: 16 * 60 * 1000,
-    moderatorPassword: "mod"
+    moderatorPassword: null
 }
 
 let state = {
