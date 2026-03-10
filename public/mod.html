@@ -30,7 +30,7 @@
     <main id="bg" class="flex-1 flex flex-col items-center justify-center bg-base-100 relative gap-10">
 
         <!-- TIMER -->
-        <div class="font-mono text-[20vw] leading-none flex items-center gap-0">
+        <div class="font-mono text-[24vw] leading-none flex items-center gap-0">
 
             <span class="countdown">
                 <span id="minutes" style="--value:60; --digits:2">60</span>
@@ -48,30 +48,14 @@
         <div class="card bg-base-200 shadow-xl w-full max-w-xl">
             <div class="card-body">
 
-                <h2 class="card-title">Administrator Controls</h2>
+                <h2 class="card-title">Moderator Controls</h2>
 
                 <div class="form-control w-full">
                     <label class="label">
-                        <span class="label-text">Administrator Password</span>
+                        <span class="label-text">Moderator Password</span>
                     </label>
-                    <input id="password" type="password" placeholder="Administrator password"
+                    <input id="password" type="password" placeholder="Enter moderator password"
                         class="input input-bordered w-full" />
-                </div>
-
-                <div class="form-control w-full mt-4">
-                    <label class="label">
-                        <span class="label-text">Set Moderator Password</span>
-                    </label>
-
-                    <div class="join w-full">
-                        <input id="modPass" type="password" placeholder="Moderator password"
-                            class="input input-bordered join-item" />
-
-
-                        <button id="sendModPass" class="btn btn-secondary join-item">
-                            Send
-                        </button>
-                    </div>
                 </div>
 
                 <div class="form-control w-full mt-4">

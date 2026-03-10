@@ -2,31 +2,19 @@
 document.addEventListener("DOMContentLoaded", init)
 function init() {
 
-    const startButton = document.getElementById("start")
+    document.getElementById("sendModPass").onclick = () => {
+        const password = document.getElementById("modPass").value;
 
-    startButton.addEventListener("click", (_) => {
-        console.log(state)
+        if (!password) return;
 
-        fetch("/start", { method: 'POST' })
-            .then(response => response.json())
-            .then(response => {
-                state = response
-            })
-            .catch(err => console.log(err))
-    })
-
-    const stopButton = document.getElementById("stop")
-
-    stopButton.addEventListener("click", (_) => {
-        console.log(state)
-
-        fetch("/stop", { method: 'POST' })
-            .then(response => response.json())
-            .then(response => {
-                state = response
-            })
-            .catch(err => console.log(err))
-    })
+        fetch("/config/mod/password", {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ password: password })
+        })
+    };
 
 
 }
